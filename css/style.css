@@ -24,6 +24,20 @@ body {
     --biru-gelap
   ); /* Teks dasar menggunakan warna biru gelap agar elegan */
   line-height: 1.6;
+
+  /* Pengaturan untuk efek logo background */
+  position: relative;
+  z-index: 0;
+
+  /* --- KODE BARU UNTUK STICKY FOOTER --- */
+  display: flex; /* Mengaktifkan mode flexbox */
+  flex-direction: column; /* Menyusun elemen dari atas ke bawah */
+  min-height: 100vh; /* Memaksa tinggi body minimal sebesar tinggi layar penuh */
+}
+
+/* --- KODE BARU: Memaksa bagian utama untuk melar --- */
+main {
+  flex: 1; /* Bagian ini akan meregang untuk mendorong footer ke paling bawah */
 }
 
 /* 3. Bagian Header dan Navigasi (Dominan Merah Tua) */
