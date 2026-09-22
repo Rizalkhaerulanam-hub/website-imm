@@ -1,0 +1,423 @@
+/* --- style.css --- */
+
+/* 1. Kumpulan Variabel Warna (Palet dari image_d7c6ba.jpg) */
+:root {
+  --merah-tua: #741513;
+  --merah-terang: #bb221c;
+  --biru: #1754d1;
+  --biru-gelap: #13133f;
+  --latar-belakang: #f9f9f9;
+  --putih: #ffffff;
+}
+
+/* 2. Pengaturan Dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--latar-belakang);
+  color: var(
+    --biru-gelap
+  ); /* Teks dasar menggunakan warna biru gelap agar elegan */
+  line-height: 1.6;
+}
+
+/* 3. Bagian Header dan Navigasi (Dominan Merah Tua) */
+header {
+  background-color: var(--merah-tua);
+  color: var(--putih);
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Mengatur wadah logo agar gambar dan teks berjejer rapi */
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex; /* Perintah agar isinya berbaris ke samping */
+  align-items: center; /* Memastikan gambar dan teks sejajar di tengah secara vertikal */
+  gap: 12px; /* Memberikan jarak/spasi antara gambar logo dan teks */
+}
+
+/* Mengatur ukuran dan latar belakang gambar logo */
+.logo-img {
+  height: 45px; /* Tinggi lingkaran diperbesar sedikit untuk menampung ruang putih */
+  width: 45px; /* Lebar harus SAMA dengan tinggi agar menjadi lingkaran sempurna */
+  background-color: var(
+    --putih
+  ); /* Memberikan warna latar belakang putih dari variabel warna kita */
+  border-radius: 50%; /* Perintah CSS untuk membuat kotak menjadi lingkaran penuh */
+  padding: 1px; /* Memberikan ruang/jarak antara gambar logo asli dengan tepi lingkaran putih */
+  object-fit: contain; /* Memastikan gambar logo tetap utuh dan tidak gepeng di dalam lingkaran */
+}
+
+/* --- Pembaruan Bagian Navigasi --- */
+nav a {
+  color: var(--putih);
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  position: relative; /* Diperlukan untuk trik garis bawah */
+  padding-bottom: 5px; /* Memberi jarak antara teks dan ruang munculnya garis bawah */
+}
+
+/* Trik membuat garis bawah animasi yang tersembunyi */
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0; /* Lebar awal 0 sehingga tidak terlihat */
+  height: 2px;
+  background-color: var(--putih); /* Warna garis bawah putih */
+  transition: width 0.3s ease; /* Animasi pelebaran garis selama 0.3 detik */
+}
+
+/* Saat menu disentuh kursor, garisnya melebar hingga penuh */
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Penanda menu yang sedang aktif (garis bawah tampil permanen) */
+nav a.aktif::after {
+  width: 100%;
+}
+
+/* --- Animasi Transisi Halaman (Pudar Masuk) --- */
+@keyframes pudarMasuk {
+  from {
+    opacity: 0; /* Mulai dari transparan */
+    transform: translateY(15px); /* Posisi awal sedikit turun ke bawah */
+  }
+  to {
+    opacity: 1; /* Berakhir menjadi terlihat jelas */
+    transform: translateY(0); /* Kembali ke posisi semula */
+  }
+}
+
+/* Menerapkan animasi pudar masuk ke seluruh isi konten halaman */
+main {
+  animation: pudarMasuk 0.6s ease-out forwards;
+}
+
+/* 4. Bagian Sambutan (Hero Section) */
+.hero {
+  background-color: var(--merah-terang); /* Merah terang sebagai variasi */
+  color: var(--putih);
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+/* 5. Bagian Konten (Artikel/Berita) */
+.container {
+  padding: 2rem 5%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--merah-tua); /* Judul bagian menggunakan merah tua */
+}
+
+.artikel-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.kartu-artikel {
+  background-color: var(--putih);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.kartu-artikel h3 {
+  margin-bottom: 10px;
+  color: var(--biru-gelap); /* Judul artikel menggunakan biru gelap */
+}
+
+.kartu-artikel a {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--biru); /* Tombol baca selengkapnya menggunakan biru */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.kartu-artikel a:hover {
+  text-decoration: underline;
+  color: var(--merah-tua);
+}
+
+/* 6. Bagian Footer (Dominan Merah Tua) */
+footer {
+  background-color: var(--merah-tua);
+  color: var(--putih);
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* 7. Bagian Susunan Pengurus */
+.pengurus-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* Jika layar sempit, kartu akan otomatis turun ke baris bawah */
+  justify-content: center;
+}
+
+.kartu-pengurus {
+  background-color: var(--putih);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 250px;
+  text-align: center; /* Membuat semua teks di dalam kartu berada di tengah */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.foto-placeholder {
+  width: 100px;
+  height: 100px;
+  background-color: var(--merah-terang); /* Menggunakan warna dari palet kita */
+  border-radius: 50%; /* Trik CSS untuk membuat bentuk persegi menjadi lingkaran penuh */
+  margin: 0 auto 15px auto; /* Mengatur jarak bawah dan memposisikan lingkaran di tengah */
+}
+/* Desain untuk foto pengurus asli */
+.foto-pengurus {
+  width: 120px; /* Ukuran diperbesar sedikit agar wajah lebih jelas */
+  height: 120px;
+  border-radius: 50%; /* Membuat foto menjadi lingkaran sempurna */
+  object-fit: cover; /* Menjaga proporsi wajah agar tidak gepeng/distorsi */
+  margin: 0 auto 15px auto;
+  display: block;
+  border: 3px solid var(--merah-tua); /* Memberikan bingkai warna merah tua agar elegan */
+}
+
+.kartu-pengurus h3 {
+  color: var(--biru-gelap);
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.kartu-pengurus p {
+  color: var(--merah-tua);
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* 8. Bagian Galeri */
+.galeri-grid {
+  display: grid;
+  /* Ini kode ajaib agar kolom menyesuaikan ukuran layar secara otomatis */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 1rem 0;
+}
+
+.item-galeri {
+  background-color: var(--putih);
+  border-radius: 8px;
+  overflow: hidden; /* Memotong ujung foto agar ikut melengkung sesuai kotak */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--merah-terang); /* Bingkai merah terang dari palet kita */
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease; /* Efek halus */
+}
+
+/* Efek saat foto disentuh kursor */
+.item-galeri:hover {
+  transform: scale(1.03); /* Membesar sedikit (3%) */
+  border-color: var(--merah-tua); /* Bingkai berubah jadi merah tua */
+}
+
+.item-galeri img {
+  width: 100%;
+  height: 200px; /* Tinggi foto diseragamkan */
+  object-fit: cover; /* Mencegah foto menjadi gepeng/distorsi */
+  display: block;
+}
+
+.item-galeri p {
+  text-align: center;
+  padding: 12px;
+  color: var(--biru-gelap); /* Teks menggunakan warna biru gelap agar elegan */
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* 9. Bagian Kontak */
+.kontak-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* Agar kolom turun ke bawah di layar kecil */
+  gap: 30px;
+  justify-content: center;
+}
+
+.info-kontak,
+.form-kontak {
+  background-color: var(--putih);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  flex: 1; /* Membuat kedua kotak memiliki lebar yang seimbang */
+  min-width: 300px; /* Batas minimal lebar agar tidak terlalu menyusut */
+}
+
+.info-kontak h3,
+.form-kontak h3 {
+  color: var(--merah-tua);
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--merah-terang);
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.info-kontak p {
+  margin-bottom: 12px;
+  color: var(--biru-gelap);
+  font-size: 1rem;
+}
+
+/* Desain khusus untuk kotak isian formulir */
+.form-kontak form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-kontak input,
+.form-kontak textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: inherit; /* Mengikuti jenis huruf website */
+}
+
+/* Desain tombol kirim */
+.form-kontak button {
+  background-color: var(--merah-tua);
+  color: var(--putih);
+  border: none;
+  padding: 12px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.form-kontak button:hover {
+  background-color: var(--merah-terang); /* Efek berubah warna saat disentuh */
+}
+
+/* 10. Bagian Tentang Kami */
+.profil-box {
+  background-color: var(--putih);
+  padding: 2.5rem; /* Memberikan ruang kosong di dalam kotak agar teks tidak sesak */
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  line-height: 1.8;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Memberikan efek bayangan halus */
+}
+
+.profil-box h3 {
+  color: var(--merah-tua); /* Judul menggunakan warna merah tua */
+  margin-top: 1.5rem; /* Jarak bagian atas sebelum judul baru dimulai */
+  margin-bottom: 10px;
+  border-bottom: 2px solid var(--merah-terang); /* Garis bawah pemanis pada judul */
+  display: inline-block; /* Agar panjang garis bawah menyesuaikan panjang teks */
+}
+
+/* Khusus untuk judul h3 yang paling pertama, tidak perlu jarak atas */
+.profil-box h3:first-child {
+  margin-top: 0;
+}
+
+.profil-box p {
+  color: var(--biru-gelap);
+  margin-bottom: 15px;
+  text-align: justify; /* Membuat ujung teks rata kanan dan kiri */
+}
+
+.profil-box ul {
+  margin-left: 25px;
+  margin-bottom: 15px;
+  color: var(--biru-gelap);
+}
+
+.profil-box li {
+  margin-bottom: 8px; /* Memberikan jarak antar poin misi agar tidak menempel */
+}
+
+/* 11. Efek Latar Belakang Logo Transparan (Watermark) */
+
+/* Memastikan lapisan latar belakang tetap berada di posisinya */
+body {
+  position: relative;
+  z-index: 0;
+}
+
+/* Membuat lapisan khusus di paling belakang untuk logo */
+body::before {
+  content: "";
+  position: fixed; /* Fixed agar logo tidak ikut naik-turun saat website digulir (scroll) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  /* Memanggil gambar logo. Karena file style.css ada di dalam folder 'css', 
+       kita gunakan '../' untuk keluar folder dulu, baru masuk ke folder 'asset' */
+  background-image: url("../asset/gambar/logo-imm.svg");
+
+  background-repeat: no-repeat;
+  background-size: 50%; /* Ukuran logo di latar belakang (bisa kamu perbesar/perkecil) */
+  opacity: 0.1; /* Tingkat kesamaran logo (5%). Semakin kecil angkanya, semakin pudar */
+  z-index: -1; /* Memastikan logo berada di lapisan paling bawah, di belakang teks */
+  transition: background-position 0.5s ease; /* Efek halus jika ada transisi */
+}
+
+/* --- Pengaturan Posisi Logo Berbeda untuk Setiap Halaman --- */
+
+/* Posisi di halaman Beranda (Tengah Kanan) */
+body.bg-beranda::before {
+  background-position: right -10% center;
+}
+
+/* Posisi di halaman Tentang Kami (Kiri Bawah) */
+body.bg-tentang::before {
+  background-position: left -10% bottom -10%;
+}
+
+/* Posisi di halaman Susunan Pengurus (Kanan Atas) */
+body.bg-pengurus::before {
+  background-position: right 10% top 15%;
+}
+
+/* Posisi di halaman Galeri (Kiri Tengah) */
+body.bg-galeri::before {
+  background-position: left -5% center;
+}
+
+/* Posisi di halaman Kontak (Tengah Bawah) */
+body.bg-kontak::before {
+  background-position: center bottom -15%;
+}

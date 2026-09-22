@@ -1,0 +1,74 @@
+<!-- --- kontak.html --- -->
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMM Buya Hamka - Kontak</title>
+    <!-- Memanggil CSS dari folder css -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-kontak">
+    <!-- Header & Menu -->
+    <header>
+      <div class="logo">
+        <!-- Memanggil logo dari folder asset -->
+        <img src="asset/gambar/logo-imm.svg" alt="Logo IMM" class="logo-img" />
+        <span>IMM Buya Hamka</span>
+      </div>
+      <nav>
+        <a href="index.html">Beranda</a>
+        <a href="tentang.html">Tentang Kami</a>
+        <a href="pengurus.html">Susunan Pengurus</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="kontak.html" class="aktif">Kontak</a>
+      </nav>
+    </header>
+
+    <!-- Konten Utama Kontak -->
+    <main class="container">
+      <h2 class="section-title">Hubungi Kami</h2>
+
+      <div class="kontak-wrapper">
+        <!-- Kolom Informasi Kontak -->
+        <div class="info-kontak">
+          <h3>Informasi Sekretariat</h3>
+          <p>
+            <strong>Alamat:</strong> Jl. Pendidikan No. 12, Kabupaten Pemalang,
+            Jawa Tengah
+          </p>
+          <p><strong>Email:</strong> komisariat@immbuyahamka.org</p>
+          <p><strong>Instagram:</strong> @imm_buyahamka</p>
+          <p><strong>WhatsApp:</strong> +62 812-XXXX-XXXX (Humas)</p>
+        </div>
+
+        <!-- Kolom Formulir Pesan -->
+        <div class="form-kontak">
+          <h3>Kirim Pesan</h3>
+          <form action="#">
+            <!-- type="text" untuk isian teks biasa -->
+            <input type="text" placeholder="Nama Lengkap" required />
+            <!-- type="email" memastikan format penulisan email valid -->
+            <input type="email" placeholder="Email Anda" required />
+            <!-- textarea digunakan untuk teks panjang/paragraf -->
+            <textarea
+              placeholder="Tulis pesan, kritik, atau saran Anda di sini..."
+              rows="5"
+              required
+            ></textarea>
+
+            <button type="submit">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        &copy; 2026 Ikatan Mahasiswa Muhammadiyah Buya Hamka. Semua hak cipta
+        dilindungi.
+      </p>
+    </footer>
+  </body>
+</html>
