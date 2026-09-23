@@ -590,3 +590,100 @@ body.bg-kontak::before {
   font-size: 1.3rem; /* Menyesuaikan ukuran teks agar tidak terlalu besar */
   font-weight: bold;
 }
+
+/* --- 13. TAMBAHAN ELEMEN KERANGKA BERITA --- */
+
+/* Gaya Seragam untuk Judul Widget di Sidebar dan Konten */
+.widget-judul {
+  border-bottom: 2px solid var(--merah-terang);
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  font-size: 1.25rem;
+  color: var(--merah-tua);
+}
+
+.widget {
+  margin-bottom: 30px;
+}
+
+/* Gaya Khusus Daftar Berita Terpopuler (Dengan Angka) */
+.list-populer {
+  list-style: none; /* Menghilangkan titik (bullet) bawaan HTML */
+  padding: 0;
+}
+
+.list-populer li {
+  display: flex; /* Menyusun angka dan teks sejajar */
+  gap: 15px; /* Jarak antara angka dan teks judul */
+  margin-bottom: 15px;
+  border-bottom: 1px dashed #ddd; /* Garis bawah putus-putus yang elegan */
+  padding-bottom: 10px;
+}
+
+/* Desain Kotak Angka (Urutan 1, 2, 3...) */
+.list-populer .nomor {
+  background-color: var(--merah-tua);
+  color: var(--putih);
+  font-weight: bold;
+  font-size: 1rem;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px; /* Sedikit melengkung ujungnya */
+  flex-shrink: 0; /* Mencegah kotak angka mengecil saat teks panjang */
+}
+
+.list-populer a {
+  text-decoration: none;
+  color: var(--biru-gelap);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.list-populer a:hover {
+  color: var(--merah-terang);
+}
+
+/* --- Desain Navigasi Halaman (Pagination) --- */
+.pagination-container {
+  text-align: center; /* Memosisikan tombol di tengah */
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.pagination {
+  display: inline-flex; /* Menyusun tombol berjejer menyamping */
+  list-style: none;
+  padding: 0;
+  gap: 5px; /* Jarak antar kotak tombol */
+}
+
+.pagination li a {
+  display: block;
+  padding: 8px 15px;
+  text-decoration: none;
+  color: var(--biru-gelap);
+  background-color: var(--putih);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Efek saat tombol halaman disentuh (Hover) */
+.pagination li a:hover {
+  background-color: var(--latar-belakang);
+  border-color: var(--merah-tua);
+  color: var(--merah-tua);
+}
+
+/* Gaya untuk tombol halaman yang sedang aktif/dibuka */
+.pagination li a.aktif {
+  background-color: var(--merah-tua);
+  color: var(--putih);
+  border-color: var(--merah-tua);
+}
