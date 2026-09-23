@@ -1,4 +1,3 @@
-<!-- --- index.html --- -->
 <!doctype html>
 <html lang="id">
   <head>
@@ -7,13 +6,24 @@
     <title>IMM Buya Hamka - Beranda</title>
     <!-- Menghubungkan HTML ini dengan file desain CSS kita -->
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* Pindahkan gaya inline dari .banner-tengah ke sini */
+      .banner-tengah {
+        margin: 20px 0;
+      }
+      /* Pindahkan gaya inline dari elemen gambar ke sini */
+      .banner-kiri img,
+      .banner-tengah img {
+        width: 100%;
+        display: block;
+      }
+    </style>
   </head>
 
   <body class="bg-beranda">
-    <!-- Bagian Kepala (Header & Menu) -->
+    <!-- Bagian Kepala (Header & Menu) - KITA TETAPKAN -->
     <header>
       <div class="logo">
-        <!-- Ini adalah kode untuk memanggil gambar logo -->
         <img src="asset/gambar/logo-imm.svg" alt="Logo IMM" class="logo-img" />
         <span>IMM Buya Hamka</span>
       </div>
@@ -26,53 +36,122 @@
       </nav>
     </header>
 
-    <!-- Bagian Sambutan Utama -->
-    <section class="hero">
-      <h1>Selamat Datang di IMM Buya Hamka</h1>
-      <p>
-        Wadah perjuangan, keilmuan, dan pengabdian mahasiswa untuk umat dan
-        bangsa.
-      </p>
-    </section>
-
-    <!-- Bagian Daftar Artikel dan Berita -->
-    <main class="container">
-      <h2 class="section-title">Berita & Artikel Terbaru</h2>
-
-      <div class="artikel-grid">
-        <!-- Artikel 1 -->
-        <div class="kartu-artikel">
-          <h3>Kegiatan Sosial Bulan Ini</h3>
-          <p>
-            Ringkasan singkat tentang kegiatan pembagian sembako dan buku gratis
-            yang diadakan minggu lalu...
-          </p>
-          <a href="#">Baca selengkapnya &rarr;</a>
+    <!-- BAGIAN BARU: Konten Berita Utama (Kiri 30%, Kanan 70%) -->
+    <div class="news-container">
+      <!-- KOLOM KIRI (Sidebar) -->
+      <aside class="sidebar">
+        <div class="banner-kiri">
+          <!-- Gambar dummy untuk area banner kiri -->
+          <img
+            src="https://via.placeholder.com/300x400?text=Banner+Kiri"
+            alt="Banner IMM"
+          />
         </div>
 
-        <!-- Artikel 2 -->
-        <div class="kartu-artikel">
-          <h3>Artikel Keilmuan: Peran Teknologi</h3>
-          <p>
-            Diskusi keilmuan mengenai bagaimana mahasiswa menyikapi perkembangan
-            AI di dunia pendidikan saat ini...
-          </p>
-          <a href="#">Baca selengkapnya &rarr;</a>
+        <div class="widget-berita-terkini">
+          <h3>BERITA TERKINI</h3>
+          <ul class="list-berita-kecil">
+            <li>
+              <a href="#">Kajian Rutin IMM: Membedah Pemikiran Buya Hamka</a>
+            </li>
+            <li><a href="#">Aksi Sosial Mahasiswa di Desa Binaan</a></li>
+            <li><a href="#">Pendaftaran Kader Baru Telah Dibuka</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- KOLOM KANAN (Konten Utama) -->
+      <main class="main-content">
+        <!-- Slider Atas (Gambar Besar & Judul) -->
+        <!-- Slider Atas (Gambar Besar & Judul) -->
+        <div class="slider-utama">
+          <div class="slider-gambar">
+            <img
+              src="https://via.placeholder.com/800x400?text=Banner+Utama+IMM"
+              alt="Slider Utama"
+              class="img-slider"
+            />
+            <div class="slider-teks">
+              <h2>Selamat Datang di Portal Informasi IMM Buya Hamka</h2>
+            </div>
+          </div>
         </div>
 
-        <!-- Artikel 3 -->
-        <div class="kartu-artikel">
-          <h3>Pelantikan Pengurus Baru</h3>
-          <p>
-            Berita kegiatan pelantikan pengurus IMM Buya Hamka periode tahun ini
-            yang berjalan dengan khidmat...
-          </p>
-          <a href="#">Baca selengkapnya &rarr;</a>
+        <!-- Banner Tengah -->
+        <div class="banner-tengah">
+          <img
+            src="https://via.placeholder.com/800x120?text=Banner+Informasi+Kajian"
+            alt="Banner Kajian"
+          />
         </div>
-      </div>
-    </main>
 
-    <!-- Bagian Kaki (Footer) -->
+        <!-- Daftar Berita (Teks Kiri, Gambar Kanan) -->
+        <div class="daftar-berita">
+          <h3>ARTIKEL TERBARU</h3>
+
+          <!-- Artikel 1 -->
+          <article class="berita-item">
+            <div class="berita-info">
+              <a href="#">
+                <h4 class="berita-judul">
+                  Pelepasan Kader IMM untuk Mengabdi di Pelosok Negeri
+                </h4>
+              </a>
+              <div class="berita-meta">
+                <span class="kategori-label bg-edukasi">EDUKASI</span>
+                <span class="waktu">2 jam yang lalu</span>
+              </div>
+            </div>
+            <!-- Gambar Thumbnail diposisikan setelah teks agar berada di kanan -->
+            <img
+              src="https://via.placeholder.com/150x120?text=Gambar+1"
+              alt="Thumbnail"
+              class="berita-thumbnail"
+            />
+          </article>
+
+          <!-- Artikel 2 -->
+          <article class="berita-item">
+            <div class="berita-info">
+              <a href="#">
+                <h4 class="berita-judul">
+                  Fatwa Terbaru Majelis Tarjih tentang Penggunaan AI
+                </h4>
+              </a>
+              <div class="berita-meta">
+                <span class="kategori-label bg-fatwa">FATWA & HUKUM</span>
+                <span class="waktu">1 hari yang lalu</span>
+              </div>
+            </div>
+            <img
+              src="https://via.placeholder.com/150x120?text=Gambar+2"
+              alt="Thumbnail"
+              class="berita-thumbnail"
+            />
+          </article>
+
+          <!-- Artikel 3 -->
+          <article class="berita-item">
+            <div class="berita-info">
+              <a href="#">
+                <h4 class="berita-judul">Menjaga Ukhuwah di Era Digital</h4>
+              </a>
+              <div class="berita-meta">
+                <span class="kategori-label bg-khutbah">KHUTBAH</span>
+                <span class="waktu">5 hari yang lalu</span>
+              </div>
+            </div>
+            <img
+              src="https://via.placeholder.com/150x120?text=Gambar+3"
+              alt="Thumbnail"
+              class="berita-thumbnail"
+            />
+          </article>
+        </div>
+      </main>
+    </div>
+
+    <!-- Bagian Kaki (Footer) - KITA TETAPKAN -->
     <footer>
       <p>
         &copy; 2026 Ikatan Mahasiswa Muhammadiyah Buya Hamka. Semua hak cipta

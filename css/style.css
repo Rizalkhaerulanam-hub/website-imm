@@ -40,6 +40,32 @@ main {
   flex: 1; /* Bagian ini akan meregang untuk mendorong footer ke paling bawah */
 }
 
+/* --- DESAIN JUDUL HALAMAN UNIVERSAL --- */
+.judul-halaman {
+  text-align: center; /* Memastikan teks berada tepat di tengah */
+  color: var(
+    --merah-tua
+  ); /* Menggunakan warna merah tua yang elegan dari paletmu */
+  font-size: 2.2rem; /* Membuat ukuran huruf cukup besar sebagai judul */
+  font-weight: bold;
+  margin-top: 30px; /* Jarak aman dari header di atasnya */
+  margin-bottom: 40px; /* Jarak aman sebelum konten utama dimulai */
+  position: relative; /* Diperlukan untuk membuat garis hiasan di bawahnya */
+}
+
+/* Membuat garis aksen (hiasan) di bawah judul utama */
+.judul-halaman::after {
+  content: "";
+  display: block;
+  width: 70px; /* Lebar garis hiasan */
+  height: 4px; /* Ketebalan garis */
+  background-color: var(
+    --merah-terang
+  ); /* Warna garis menggunakan merah terang */
+  margin: 15px auto 0 auto; /* Mendorong garis agar pas di tengah-tengah bawah teks */
+  border-radius: 3px; /* Membuat ujung garis sedikit melengkung */
+}
+
 /* 3. Bagian Header dan Navigasi (Dominan Merah Tua) */
 header {
   background-color: var(--merah-tua);
@@ -118,64 +144,6 @@ nav a.aktif::after {
 /* Menerapkan animasi pudar masuk ke seluruh isi konten halaman */
 main {
   animation: pudarMasuk 0.6s ease-out forwards;
-}
-
-/* 4. Bagian Sambutan (Hero Section) */
-.hero {
-  background-color: var(--merah-terang); /* Merah terang sebagai variasi */
-  color: var(--putih);
-  text-align: center;
-  padding: 4rem 2rem;
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-/* 5. Bagian Konten (Artikel/Berita) */
-.container {
-  padding: 2rem 5%;
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: var(--merah-tua); /* Judul bagian menggunakan merah tua */
-}
-
-.artikel-grid {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.kartu-artikel {
-  background-color: var(--putih);
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1.5rem;
-  width: 300px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.kartu-artikel h3 {
-  margin-bottom: 10px;
-  color: var(--biru-gelap); /* Judul artikel menggunakan biru gelap */
-}
-
-.kartu-artikel a {
-  display: inline-block;
-  margin-top: 15px;
-  color: var(--biru); /* Tombol baca selengkapnya menggunakan biru */
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.kartu-artikel a:hover {
-  text-decoration: underline;
-  color: var(--merah-tua);
 }
 
 /* 6. Bagian Footer (Dominan Merah Tua) */
@@ -436,4 +404,189 @@ body.bg-galeri::before {
 /* Posisi di halaman Kontak (Tengah Bawah) */
 body.bg-kontak::before {
   background-position: center bottom -15%;
+}
+
+/* 12. TATA LETAK PORTAL BERITA (UNTUK HALAMAN BERANDA BARU) */
+
+/* Mengatur wadah utama agar membelah jadi kiri (sidebar) dan kanan (konten utama) */
+.news-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto; /* Memposisikan konten di tengah layar */
+  gap: 30px; /* Jarak antara kolom kiri dan kanan */
+  padding: 0 5%; /* Menyesuaikan dengan padding header/footer di kode aslimu */
+}
+
+/* --- KOLOM KIRI (SIDEBAR) --- */
+.sidebar {
+  width: 30%;
+}
+
+.widget-berita-terkini h3 {
+  border-bottom: 2px solid var(--merah-terang); /* Menggunakan palet merah-terang kamu */
+  padding-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: var(--merah-tua); /* Menggunakan palet merah-tua kamu */
+}
+
+.list-berita-kecil {
+  list-style: none;
+  padding: 0;
+}
+
+.list-berita-kecil li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.list-berita-kecil a {
+  text-decoration: none;
+  color: var(--biru-gelap); /* Menggunakan palet biru-gelap agar elegan */
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+/* Efek saat berita di sidebar disentuh */
+.list-berita-kecil a:hover {
+  color: var(--merah-terang);
+}
+
+/* --- KOLOM KANAN (KONTEN UTAMA) --- */
+.main-content {
+  width: 70%;
+}
+
+/* Desain untuk Judul Bagian Berita Utama */
+.daftar-berita h3 {
+  border-bottom: 2px solid var(--merah-terang);
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  color: var(--merah-tua);
+}
+
+/* Mengatur agar teks di kiri dan gambar di kanan dalam satu berita */
+.berita-item {
+  display: flex;
+  justify-content: space-between; /* Mendorong teks ke kiri, gambar ke kanan */
+  gap: 20px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.berita-info {
+  flex: 1; /* Teks mengambil semua sisa ruang di kiri */
+}
+
+.berita-judul {
+  margin: 0 0 12px 0;
+  font-size: 1.25rem;
+  color: var(--biru-gelap);
+  line-height: 1.4;
+}
+
+.berita-info a {
+  text-decoration: none;
+}
+
+/* Efek saat judul berita utama disentuh */
+.berita-info a:hover .berita-judul {
+  color: var(--merah-terang);
+}
+
+/* Keterangan Kategori dan Waktu */
+.berita-meta {
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kategori-label {
+  color: var(--putih);
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+/* Warna Kategori (Bisa kamu tambah sesuai kebutuhan) */
+.bg-edukasi {
+  background-color: var(--biru);
+} /* Memakai palet biru kamu */
+.bg-khutbah {
+  background-color: var(--merah-tua);
+} /* Memakai palet merah-tua kamu */
+.bg-fatwa {
+  background-color: #28a745;
+} /* Warna hijau (tambahan khusus) */
+
+.waktu {
+  color: #777;
+}
+
+/* Ukuran Gambar Thumbnail Berita (Sebelah Kanan) */
+.berita-thumbnail {
+  width: 150px;
+  height: 120px;
+  object-fit: cover; /* Mencegah gambar menjadi gepeng */
+  border-radius: 4px;
+  border: 1px solid #eee;
+}
+
+/* --- RESPONSIVE: Tampilan untuk Layar HP --- */
+@media (max-width: 768px) {
+  .news-container {
+    flex-direction: column; /* Mengubah kolom jadi atas-bawah */
+  }
+  .sidebar,
+  .main-content {
+    width: 100%;
+  }
+  .berita-item {
+    flex-direction: column-reverse; /* Di HP: Teks di bawah, Gambar di atas */
+  }
+  .berita-thumbnail {
+    width: 100%; /* Gambar menjadi lebar penuh di HP */
+    height: auto;
+    aspect-ratio: 16/9; /* Menjaga proporsi gambar */
+  }
+}
+
+/* --- GAYA KHUSUS UNTUK SLIDER UTAMA --- */
+.slider-utama {
+  margin-top: 10px; /* Memberikan jarak agar tidak menabrak header/navigasi di atasnya */
+  margin-bottom: 25px; /* Memberikan jarak dari spanduk di bawahnya */
+}
+
+.slider-gambar {
+  position: relative; /* KUNCI PENTING: Mengurung teks absolute agar tidak terbang keluar */
+  border-radius: 8px; /* Mengikuti gaya ujung melengkung seperti di kartumu */
+  overflow: hidden; /* Memotong teks atau warna latar yang berani keluar dari kotak ini */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Memberikan bayangan halus */
+}
+
+.img-slider {
+  width: 100%;
+  display: block; /* Menghilangkan ruang kosong putih di bawah gambar */
+  object-fit: cover;
+}
+
+.slider-teks {
+  position: absolute;
+  bottom: 0; /* Menempel persis di bagian bawah gambar */
+  left: 0;
+  width: 100%;
+  /* Menggunakan warna merah tua (#741513) tapi sedikit tembus pandang (0.8) */
+  background: rgba(116, 21, 19, 0.85);
+  color: var(--putih); /* Memakai palet putih milikmu */
+  padding: 15px 20px;
+}
+
+.slider-teks h2 {
+  margin: 0;
+  font-size: 1.3rem; /* Menyesuaikan ukuran teks agar tidak terlalu besar */
+  font-weight: bold;
 }
