@@ -188,11 +188,13 @@ footer {
 }
 
 /* 7. Bagian Susunan Pengurus */
-.pengurus-grid {
+/* Pengaturan Tata Letak Hierarki (Struktur Organisasi) */
+.baris-pengurus {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap; /* Jika layar sempit, kartu akan otomatis turun ke baris bawah */
-  justify-content: center;
+  gap: 30px; /* Jarak antar kartu ke samping */
+  justify-content: center; /* Memastikan kartu selalu di tengah layar */
+  flex-wrap: wrap; /* Jika layar sempit di HP, kartu akan otomatis turun ke bawah */
+  margin-bottom: 40px; /* Memberikan jarak ruang yang cukup ke baris jabatan di bawahnya */
 }
 
 .kartu-pengurus {
