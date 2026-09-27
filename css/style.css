@@ -1,689 +1,88 @@
-/* --- style.css --- */
-
-/* 1. Kumpulan Variabel Warna (Palet dari image_d7c6ba.jpg) */
-:root {
-  --merah-tua: #741513;
-  --merah-terang: #bb221c;
-  --biru: #1754d1;
-  --biru-gelap: #13133f;
-  --latar-belakang: #f9f9f9;
-  --putih: #ffffff;
-}
-
-/* 2. Pengaturan Dasar */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  background-color: var(--latar-belakang);
-  color: var(
-    --biru-gelap
-  ); /* Teks dasar menggunakan warna biru gelap agar elegan */
-  line-height: 1.6;
-
-  /* Pengaturan untuk efek logo background */
-  position: relative;
-  z-index: 0;
-
-  /* --- KODE BARU UNTUK STICKY FOOTER --- */
-  display: flex; /* Mengaktifkan mode flexbox */
-  flex-direction: column; /* Menyusun elemen dari atas ke bawah */
-  min-height: 100vh; /* Memaksa tinggi body minimal sebesar tinggi layar penuh */
-}
-
-/* --- KODE BARU: Memaksa bagian utama untuk melar --- */
-main {
-  flex: 1; /* Bagian ini akan meregang untuk mendorong footer ke paling bawah */
-}
-
-/* --- DESAIN JUDUL HALAMAN UNIVERSAL --- */
-.judul-halaman {
-  text-align: center; /* Memastikan teks berada tepat di tengah */
-  color: var(
-    --merah-tua
-  ); /* Menggunakan warna merah tua yang elegan dari paletmu */
-  font-size: 2.2rem; /* Membuat ukuran huruf cukup besar sebagai judul */
-  font-weight: bold;
-  margin-top: 30px; /* Jarak aman dari header di atasnya */
-  margin-bottom: 40px; /* Jarak aman sebelum konten utama dimulai */
-  position: relative; /* Diperlukan untuk membuat garis hiasan di bawahnya */
-}
-
-/* Membuat garis aksen (hiasan) di bawah judul utama */
-.judul-halaman::after {
-  content: "";
-  display: block;
-  width: 70px; /* Lebar garis hiasan */
-  height: 4px; /* Ketebalan garis */
-  background-color: var(
-    --merah-terang
-  ); /* Warna garis menggunakan merah terang */
-  margin: 15px auto 0 auto; /* Mendorong garis agar pas di tengah-tengah bawah teks */
-  border-radius: 3px; /* Membuat ujung garis sedikit melengkung */
-}
-
-/* 3. Bagian Header dan Navigasi (Dominan Merah Tua) */
-header {
-  background-color: var(--merah-tua);
-  color: var(--putih);
-  padding: 1rem 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Mengatur wadah logo agar gambar dan teks berjejer rapi */
-header .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  display: flex; /* Perintah agar isinya berbaris ke samping */
-  align-items: center; /* Memastikan gambar dan teks sejajar di tengah secara vertikal */
-  gap: 12px; /* Memberikan jarak/spasi antara gambar logo dan teks */
-}
-
-/* Mengatur ukuran dan latar belakang gambar logo */
-.logo-img {
-  height: 45px; /* Tinggi lingkaran diperbesar sedikit untuk menampung ruang putih */
-  width: 45px; /* Lebar harus SAMA dengan tinggi agar menjadi lingkaran sempurna */
-  background-color: var(
-    --putih
-  ); /* Memberikan warna latar belakang putih dari variabel warna kita */
-  border-radius: 50%; /* Perintah CSS untuk membuat kotak menjadi lingkaran penuh */
-  padding: 1px; /* Memberikan ruang/jarak antara gambar logo asli dengan tepi lingkaran putih */
-  object-fit: contain; /* Memastikan gambar logo tetap utuh dan tidak gepeng di dalam lingkaran */
-}
-
-/* --- Pembaruan Bagian Navigasi --- */
-nav a {
-  color: var(--putih);
-  text-decoration: none;
-  margin-left: 20px;
-  font-weight: 500;
-  position: relative; /* Diperlukan untuk trik garis bawah */
-  padding-bottom: 5px; /* Memberi jarak antara teks dan ruang munculnya garis bawah */
-}
-
-/* Trik membuat garis bawah animasi yang tersembunyi */
-nav a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0; /* Lebar awal 0 sehingga tidak terlihat */
-  height: 2px;
-  background-color: var(--putih); /* Warna garis bawah putih */
-  transition: width 0.3s ease; /* Animasi pelebaran garis selama 0.3 detik */
-}
-
-/* Saat menu disentuh kursor, garisnya melebar hingga penuh */
-nav a:hover::after {
-  width: 100%;
-}
-
-/* Penanda menu yang sedang aktif (garis bawah tampil permanen) */
-nav a.aktif::after {
-  width: 100%;
-}
-
-/* --- Animasi Transisi Halaman (Pudar Masuk) --- */
-@keyframes pudarMasuk {
-  from {
-    opacity: 0; /* Mulai dari transparan */
-    transform: translateY(15px); /* Posisi awal sedikit turun ke bawah */
-  }
-  to {
-    opacity: 1; /* Berakhir menjadi terlihat jelas */
-    transform: translateY(0); /* Kembali ke posisi semula */
-  }
-}
-
-/* Menerapkan animasi pudar masuk ke seluruh isi konten halaman */
-main {
-  animation: pudarMasuk 0.6s ease-out forwards;
-}
-
-/* 6. Bagian Footer (Dominan Merah Tua) */
-footer {
-  background-color: var(--merah-tua);
-  color: var(--putih);
-  text-align: center;
-  padding: 1.5rem;
-  margin-top: 2rem;
-}
-
-/* 7. Bagian Susunan Pengurus */
-/* Pengaturan Tata Letak Hierarki (Struktur Organisasi) */
-.baris-pengurus {
-  display: flex;
-  gap: 30px; /* Jarak antar kartu ke samping */
-  justify-content: center; /* Memastikan kartu selalu di tengah layar */
-  flex-wrap: wrap; /* Jika layar sempit di HP, kartu akan otomatis turun ke bawah */
-  margin-bottom: 40px; /* Memberikan jarak ruang yang cukup ke baris jabatan di bawahnya */
-}
-
-.kartu-pengurus {
-  background-color: var(--putih);
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1.5rem;
-  width: 250px;
-  text-align: center; /* Membuat semua teks di dalam kartu berada di tengah */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.foto-placeholder {
-  width: 100px;
-  height: 100px;
-  background-color: var(--merah-terang); /* Menggunakan warna dari palet kita */
-  border-radius: 50%; /* Trik CSS untuk membuat bentuk persegi menjadi lingkaran penuh */
-  margin: 0 auto 15px auto; /* Mengatur jarak bawah dan memposisikan lingkaran di tengah */
-}
-/* Desain untuk foto pengurus asli */
-.foto-pengurus {
-  width: 120px; /* Ukuran diperbesar sedikit agar wajah lebih jelas */
-  height: 120px;
-  border-radius: 50%; /* Membuat foto menjadi lingkaran sempurna */
-  object-fit: cover; /* Menjaga proporsi wajah agar tidak gepeng/distorsi */
-  margin: 0 auto 15px auto;
-  display: block;
-  border: 3px solid var(--merah-tua); /* Memberikan bingkai warna merah tua agar elegan */
-}
-
-.kartu-pengurus h3 {
-  color: var(--biru-gelap);
-  margin-bottom: 5px;
-  font-size: 1.2rem;
-}
-
-.kartu-pengurus p {
-  color: var(--merah-tua);
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-/* 8. Bagian Galeri */
-.galeri-grid {
-  display: grid;
-  /* Ini kode ajaib agar kolom menyesuaikan ukuran layar secara otomatis */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 1rem 0;
-}
-
-.item-galeri {
-  background-color: var(--putih);
-  border-radius: 8px;
-  overflow: hidden; /* Memotong ujung foto agar ikut melengkung sesuai kotak */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid var(--merah-terang); /* Bingkai merah terang dari palet kita */
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease; /* Efek halus */
-}
-
-/* Efek saat foto disentuh kursor */
-.item-galeri:hover {
-  transform: scale(1.03); /* Membesar sedikit (3%) */
-  border-color: var(--merah-tua); /* Bingkai berubah jadi merah tua */
-}
-
-.item-galeri img {
-  width: 100%;
-  height: 200px; /* Tinggi foto diseragamkan */
-  object-fit: cover; /* Mencegah foto menjadi gepeng/distorsi */
-  display: block;
-}
-
-.item-galeri p {
-  text-align: center;
-  padding: 12px;
-  color: var(--biru-gelap); /* Teks menggunakan warna biru gelap agar elegan */
-  font-weight: 500;
-  font-size: 0.95rem;
-}
-
-/* 9. Bagian Kontak */
-.kontak-wrapper {
-  display: flex;
-  flex-wrap: wrap; /* Agar kolom turun ke bawah di layar kecil */
-  gap: 30px;
-  justify-content: center;
-}
-
-.info-kontak,
-.form-kontak {
-  background-color: var(--putih);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
-  flex: 1; /* Membuat kedua kotak memiliki lebar yang seimbang */
-  min-width: 300px; /* Batas minimal lebar agar tidak terlalu menyusut */
-}
-
-.info-kontak h3,
-.form-kontak h3 {
-  color: var(--merah-tua);
-  margin-bottom: 15px;
-  border-bottom: 2px solid var(--merah-terang);
-  padding-bottom: 5px;
-  display: inline-block;
-}
-
-.info-kontak p {
-  margin-bottom: 12px;
-  color: var(--biru-gelap);
-  font-size: 1rem;
-}
-
-/* Desain khusus untuk kotak isian formulir */
-.form-kontak form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.form-kontak input,
-.form-kontak textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-family: inherit; /* Mengikuti jenis huruf website */
-}
-
-/* Desain tombol kirim */
-.form-kontak button {
-  background-color: var(--merah-tua);
-  color: var(--putih);
-  border: none;
-  padding: 12px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.form-kontak button:hover {
-  background-color: var(--merah-terang); /* Efek berubah warna saat disentuh */
-}
-
-/* 10. Bagian Tentang Kami */
-.profil-box {
-  background-color: var(--putih);
-  padding: 2.5rem; /* Memberikan ruang kosong di dalam kotak agar teks tidak sesak */
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  line-height: 1.8;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Memberikan efek bayangan halus */
-}
-
-.profil-box h3 {
-  color: var(--merah-tua); /* Judul menggunakan warna merah tua */
-  margin-top: 1.5rem; /* Jarak bagian atas sebelum judul baru dimulai */
-  margin-bottom: 10px;
-  border-bottom: 2px solid var(--merah-terang); /* Garis bawah pemanis pada judul */
-  display: inline-block; /* Agar panjang garis bawah menyesuaikan panjang teks */
-}
-
-/* Khusus untuk judul h3 yang paling pertama, tidak perlu jarak atas */
-.profil-box h3:first-child {
-  margin-top: 0;
-}
-
-.profil-box p {
-  color: var(--biru-gelap);
-  margin-bottom: 15px;
-  text-align: justify; /* Membuat ujung teks rata kanan dan kiri */
-}
-
-.profil-box ul {
-  margin-left: 25px;
-  margin-bottom: 15px;
-  color: var(--biru-gelap);
-}
-
-.profil-box li {
-  margin-bottom: 8px; /* Memberikan jarak antar poin misi agar tidak menempel */
-}
-
-/* 11. Efek Latar Belakang Logo Transparan (Watermark) */
-
-/* Memastikan lapisan latar belakang tetap berada di posisinya */
-body {
-  position: relative;
-  z-index: 0;
-}
-
-/* Membuat lapisan khusus di paling belakang untuk logo */
-body::before {
-  content: "";
-  position: fixed; /* Fixed agar logo tidak ikut naik-turun saat website digulir (scroll) */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  /* Memanggil gambar logo. Karena file style.css ada di dalam folder 'css', 
-       kita gunakan '../' untuk keluar folder dulu, baru masuk ke folder 'asset' */
-  background-image: url("../asset/gambar/logo-imm.svg");
-
-  background-repeat: no-repeat;
-  background-size: 50%; /* Ukuran logo di latar belakang (bisa kamu perbesar/perkecil) */
-  opacity: 0.1; /* Tingkat kesamaran logo (5%). Semakin kecil angkanya, semakin pudar */
-  z-index: -1; /* Memastikan logo berada di lapisan paling bawah, di belakang teks */
-  transition: background-position 0.5s ease; /* Efek halus jika ada transisi */
-}
-
-/* --- Pengaturan Posisi Logo Berbeda untuk Setiap Halaman --- */
-
-/* Posisi di halaman Beranda (Tengah Kanan) */
-body.bg-beranda::before {
-  background-position: right -10% center;
-}
-
-/* Posisi di halaman Tentang Kami (Kiri Bawah) */
-body.bg-tentang::before {
-  background-position: left -10% bottom -10%;
-}
-
-/* Posisi di halaman Susunan Pengurus (Kanan Atas) */
-body.bg-pengurus::before {
-  background-position: right 10% top 15%;
-}
-
-/* Posisi di halaman Galeri (Kiri Tengah) */
-body.bg-galeri::before {
-  background-position: left -5% center;
-}
-
-/* Posisi di halaman Kontak (Tengah Bawah) */
-body.bg-kontak::before {
-  background-position: center bottom -15%;
-}
-
-/* 12. TATA LETAK PORTAL BERITA (UNTUK HALAMAN BERANDA BARU) */
-
-/* Mengatur wadah utama agar membelah jadi kiri (sidebar) dan kanan (konten utama) */
-.news-container {
-  display: flex;
-  max-width: 1200px;
-  margin: 20px auto; /* Memposisikan konten di tengah layar */
-  gap: 30px; /* Jarak antara kolom kiri dan kanan */
-  padding: 0 5%; /* Menyesuaikan dengan padding header/footer di kode aslimu */
-}
-
-/* --- KOLOM KIRI (SIDEBAR) --- */
-.sidebar {
-  width: 30%;
-}
-
-.widget-berita-terkini h3 {
-  border-bottom: 2px solid var(--merah-terang); /* Menggunakan palet merah-terang kamu */
-  padding-bottom: 5px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-  color: var(--merah-tua); /* Menggunakan palet merah-tua kamu */
-}
-
-.list-berita-kecil {
-  list-style: none;
-  padding: 0;
-}
-
-.list-berita-kecil li {
-  margin-bottom: 10px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-}
-
-.list-berita-kecil a {
-  text-decoration: none;
-  color: var(--biru-gelap); /* Menggunakan palet biru-gelap agar elegan */
-  font-size: 0.95rem;
-  transition: color 0.3s ease;
-}
-
-/* Efek saat berita di sidebar disentuh */
-.list-berita-kecil a:hover {
-  color: var(--merah-terang);
-}
-
-/* --- KOLOM KANAN (KONTEN UTAMA) --- */
-.main-content {
-  width: 70%;
-}
-
-/* Desain untuk Judul Bagian Berita Utama */
-.daftar-berita h3 {
-  border-bottom: 2px solid var(--merah-terang);
-  padding-bottom: 5px;
-  margin-bottom: 20px;
-  color: var(--merah-tua);
-}
-
-/* Mengatur agar teks di kiri dan gambar di kanan dalam satu berita */
-.berita-item {
-  display: flex;
-  justify-content: space-between; /* Mendorong teks ke kiri, gambar ke kanan */
-  gap: 20px;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #ddd;
-}
-
-.berita-info {
-  flex: 1; /* Teks mengambil semua sisa ruang di kiri */
-}
-
-.berita-judul {
-  margin: 0 0 12px 0;
-  font-size: 1.25rem;
-  color: var(--biru-gelap);
-  line-height: 1.4;
-}
-
-.berita-info a {
-  text-decoration: none;
-}
-
-/* Efek saat judul berita utama disentuh */
-.berita-info a:hover .berita-judul {
-  color: var(--merah-terang);
-}
-
-/* Keterangan Kategori dan Waktu */
-.berita-meta {
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.kategori-label {
-  color: var(--putih);
-  padding: 3px 8px;
-  border-radius: 3px;
-  font-weight: bold;
-}
-
-/* Warna Kategori (Bisa kamu tambah sesuai kebutuhan) */
-.bg-edukasi {
-  background-color: var(--biru);
-} /* Memakai palet biru kamu */
-.bg-khutbah {
-  background-color: var(--merah-tua);
-} /* Memakai palet merah-tua kamu */
-.bg-fatwa {
-  background-color: #28a745;
-} /* Warna hijau (tambahan khusus) */
-
-.waktu {
-  color: #777;
-}
-
-/* Ukuran Gambar Thumbnail Berita (Sebelah Kanan) */
-.berita-thumbnail {
-  width: 150px;
-  height: 120px;
-  object-fit: cover; /* Mencegah gambar menjadi gepeng */
-  border-radius: 4px;
-  border: 1px solid #eee;
-}
-
-/* --- RESPONSIVE: Tampilan untuk Layar HP --- */
-@media (max-width: 768px) {
-  .news-container {
-    flex-direction: column; /* Mengubah kolom jadi atas-bawah */
-  }
-  .sidebar,
-  .main-content {
-    width: 100%;
-  }
-  .berita-item {
-    flex-direction: column-reverse; /* Di HP: Teks di bawah, Gambar di atas */
-  }
-  .berita-thumbnail {
-    width: 100%; /* Gambar menjadi lebar penuh di HP */
-    height: auto;
-    aspect-ratio: 16/9; /* Menjaga proporsi gambar */
-  }
-}
-
-/* --- GAYA KHUSUS UNTUK SLIDER UTAMA --- */
-.slider-utama {
-  margin-top: 10px; /* Memberikan jarak agar tidak menabrak header/navigasi di atasnya */
-  margin-bottom: 25px; /* Memberikan jarak dari spanduk di bawahnya */
-}
-
-.slider-gambar {
-  position: relative; /* KUNCI PENTING: Mengurung teks absolute agar tidak terbang keluar */
-  border-radius: 8px; /* Mengikuti gaya ujung melengkung seperti di kartumu */
-  overflow: hidden; /* Memotong teks atau warna latar yang berani keluar dari kotak ini */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Memberikan bayangan halus */
-}
-
-.img-slider {
-  width: 100%;
-  display: block; /* Menghilangkan ruang kosong putih di bawah gambar */
-  object-fit: cover;
-}
-
-.slider-teks {
-  position: absolute;
-  bottom: 0; /* Menempel persis di bagian bawah gambar */
-  left: 0;
-  width: 100%;
-  /* Menggunakan warna merah tua (#741513) tapi sedikit tembus pandang (0.8) */
-  background: rgba(116, 21, 19, 0.85);
-  color: var(--putih); /* Memakai palet putih milikmu */
-  padding: 15px 20px;
-}
-
-.slider-teks h2 {
-  margin: 0;
-  font-size: 1.3rem; /* Menyesuaikan ukuran teks agar tidak terlalu besar */
-  font-weight: bold;
-}
-
-/* --- 13. TAMBAHAN ELEMEN KERANGKA BERITA --- */
-
-/* Gaya Seragam untuk Judul Widget di Sidebar dan Konten */
-.widget-judul {
-  border-bottom: 2px solid var(--merah-terang);
-  padding-bottom: 5px;
-  margin-bottom: 15px;
-  font-size: 1.25rem;
-  color: var(--merah-tua);
-}
-
-.widget {
-  margin-bottom: 30px;
-}
-
-/* Gaya Khusus Daftar Berita Terpopuler (Dengan Angka) */
-.list-populer {
-  list-style: none; /* Menghilangkan titik (bullet) bawaan HTML */
-  padding: 0;
-}
-
-.list-populer li {
-  display: flex; /* Menyusun angka dan teks sejajar */
-  gap: 15px; /* Jarak antara angka dan teks judul */
-  margin-bottom: 15px;
-  border-bottom: 1px dashed #ddd; /* Garis bawah putus-putus yang elegan */
-  padding-bottom: 10px;
-}
-
-/* Desain Kotak Angka (Urutan 1, 2, 3...) */
-.list-populer .nomor {
-  background-color: var(--merah-tua);
-  color: var(--putih);
-  font-weight: bold;
-  font-size: 1rem;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px; /* Sedikit melengkung ujungnya */
-  flex-shrink: 0; /* Mencegah kotak angka mengecil saat teks panjang */
-}
-
-.list-populer a {
-  text-decoration: none;
-  color: var(--biru-gelap);
-  font-size: 0.95rem;
-  font-weight: 500;
-  line-height: 1.4;
-  transition: color 0.3s ease;
-}
-
-.list-populer a:hover {
-  color: var(--merah-terang);
-}
-
-/* --- Desain Navigasi Halaman (Pagination) --- */
-.pagination-container {
-  text-align: center; /* Memosisikan tombol di tengah */
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-
-.pagination {
-  display: inline-flex; /* Menyusun tombol berjejer menyamping */
-  list-style: none;
-  padding: 0;
-  gap: 5px; /* Jarak antar kotak tombol */
-}
-
-.pagination li a {
-  display: block;
-  padding: 8px 15px;
-  text-decoration: none;
-  color: var(--biru-gelap);
-  background-color: var(--putih);
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-/* Efek saat tombol halaman disentuh (Hover) */
-.pagination li a:hover {
-  background-color: var(--latar-belakang);
-  border-color: var(--merah-tua);
-  color: var(--merah-tua);
-}
-
-/* Gaya untuk tombol halaman yang sedang aktif/dibuka */
-.pagination li a.aktif {
-  background-color: var(--merah-tua);
-  color: var(--putih);
-  border-color: var(--merah-tua);
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+:root{
+  --red-950:#3f0b0a; --red-900:#5b0e0d; --red-800:#741513; --red-700:#9b1c18; --red-600:#bb221c;
+  --ink:#171717; --muted:#686868; --soft:#f7f5f3; --line:#e8e3df; --white:#fff;
+  --container:1180px; --radius-sm:12px; --radius-md:18px; --radius-lg:28px;
+  --shadow:0 16px 50px rgba(46,20,18,.08); --shadow-sm:0 8px 24px rgba(46,20,18,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
+body::selection{background:var(--red-700);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button,input,textarea{font:inherit}
+.container{width:min(calc(100% - 40px),var(--container));margin-inline:auto}
+main{flex:1;animation:pageIn .7s cubic-bezier(.22,1,.36,1) both;overflow:hidden}
+@keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(63,11,10,.92);backdrop-filter:blur(16px);color:#fff;border-bottom:1px solid rgba(255,255,255,.08);transition:background .35s ease,box-shadow .35s ease,transform .35s ease}.site-header.scrolled{background:rgba(36,8,7,.97);box-shadow:0 10px 35px rgba(0,0,0,.14)}
+.nav-wrap{width:min(calc(100% - 40px),var(--container));height:78px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.logo-img{width:46px;height:46px;border-radius:50%;object-fit:contain;background:#fff;padding:2px;flex:none}
+.brand-copy{line-height:1.15}.brand-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:800}.brand-sub{font-size:.7rem;color:#f2d9d7;margin-top:4px}
+.site-nav{display:flex;align-items:center;gap:4px}.site-nav a{padding:10px 13px;border-radius:10px;color:#f8e9e8;font-size:.9rem;font-weight:600;transition:color .25s ease,background .25s ease,transform .25s ease}.site-nav a:hover{transform:translateY(-1px)}.site-nav a:hover,.site-nav a.active{background:rgba(255,255,255,.1);color:#fff}
+.nav-toggle{display:none;border:0;background:rgba(255,255,255,.1);color:#fff;width:42px;height:42px;border-radius:10px;cursor:pointer;font-size:1.2rem}
+
+/* Common */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--red-700);font-size:.76rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.eyebrow::before{content:'';width:24px;height:2px;background:currentColor}
+.page-head{padding:74px 0 42px;background:linear-gradient(180deg,#fbf8f6 0%,#fff 100%);border-bottom:1px solid var(--line)}
+.page-head h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,4vw,3.5rem);line-height:1.12;margin-top:12px;color:var(--red-900)}
+.page-head p{max-width:680px;color:var(--muted);margin-top:14px}
+.section{padding:86px 0}.section-sm{padding:54px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:30px}.section-head h2{font-family:'Plus Jakarta Sans',sans-serif;color:var(--red-900);font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.2}.section-head p{color:var(--muted);max-width:560px}.section-link{font-weight:700;color:var(--red-700);white-space:nowrap}.section-link:hover{text-decoration:underline}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:12px;padding:12px 18px;font-weight:700;border:1px solid transparent;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,background .3s ease,border-color .3s ease;cursor:pointer}.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--red-800);color:#fff;box-shadow:0 8px 20px rgba(116,21,19,.2)}.btn-primary:hover{background:var(--red-700);transform:translateY(-1px)}.btn-outline{border-color:var(--line);background:#fff;color:var(--red-800)}.btn-outline:hover{border-color:#c9aaa7;background:#fff9f8}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s ease,border-color .35s ease}.card:hover{transform:translateY(-6px);box-shadow:0 18px 42px rgba(46,20,18,.11);border-color:#e0d2cf}
+
+/* Hero */
+.hero{background:radial-gradient(circle at 85% 15%,rgba(187,34,28,.22),transparent 32%),linear-gradient(135deg,var(--red-950),var(--red-800));color:#fff;overflow:hidden;position:relative}.hero::before{content:'';position:absolute;width:520px;height:520px;right:-180px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.09),transparent 65%);animation:heroGlow 8s ease-in-out infinite alternate}.hero::after{content:'';position:absolute;inset:auto -120px -170px auto;width:440px;height:440px;border:1px solid rgba(255,255,255,.1);border-radius:50%;box-shadow:0 0 0 70px rgba(255,255,255,.025),0 0 0 140px rgba(255,255,255,.018);animation:orbit 18s linear infinite}
+.hero-grid{min-height:590px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:60px;padding:70px 0;position:relative;z-index:1}.hero .eyebrow{color:#f5c4c0}.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2.65rem,6vw,5rem);line-height:1.03;letter-spacing:-.045em;max-width:760px}.hero h1 span{color:#f6b7b2}.hero-copy>p{color:#ead8d6;max-width:600px;font-size:1.05rem;margin:22px 0 28px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.hero .btn-outline{background:transparent;border-color:rgba(255,255,255,.28);color:#fff}.hero .btn-outline:hover{background:rgba(255,255,255,.08)}
+.hero-visual{position:relative}.hero-photo{height:470px;border-radius:30px;overflow:hidden;border:1px solid rgba(255,255,255,.2);box-shadow:0 30px 70px rgba(0,0,0,.25);background:#7e1b18}.hero-photo img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.22,1,.36,1)}.hero-photo:hover img{transform:scale(1.035)}.hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.5))}.hero-caption{position:absolute;left:28px;right:28px;bottom:26px;z-index:2}.hero-caption strong{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem}.hero-caption span{color:#f0d9d6;font-size:.85rem}.hero-badge{position:absolute;z-index:3;left:-22px;top:28px;background:#fff;color:var(--red-900);border-radius:16px;padding:14px 17px;box-shadow:0 18px 40px rgba(0,0,0,.18);font-size:.78rem;font-weight:800}.hero-badge b{display:block;font-size:1.1rem}
+
+/* Home content */
+.intro-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:start}.intro-grid h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);line-height:1.18;color:var(--red-900)}.intro-copy{color:var(--muted);font-size:1.03rem}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}.feature{padding:24px}.feature-icon{width:42px;height:42px;border-radius:12px;background:#f7e8e6;color:var(--red-700);display:grid;place-items:center;font-weight:800;margin-bottom:18px}.feature h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem}.feature p{font-size:.9rem;color:var(--muted);margin-top:7px}
+.news-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}.news-feature{overflow:hidden}.news-feature .thumb{height:360px;overflow:hidden}.news-feature img{width:100%;height:100%;object-fit:cover;transition:.45s}.news-feature:hover img{transform:scale(1.04)}.news-body{padding:24px}.tag{display:inline-flex;background:#f8e8e6;color:var(--red-800);padding:5px 9px;border-radius:999px;font-size:.7rem;font-weight:800;letter-spacing:.04em}.news-body h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.35rem;line-height:1.3;margin:12px 0 7px}.meta{font-size:.78rem;color:#8b8582}.news-list{display:grid;gap:14px}.news-mini{display:grid;grid-template-columns:120px 1fr;gap:15px;padding:12px}.news-mini img{width:120px;height:96px;object-fit:cover;border-radius:11px}.news-mini h3{font-size:.96rem;line-height:1.35}.news-mini .meta{display:block;margin-top:8px}
+.gallery-preview{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-template-rows:180px 180px;gap:14px}.gallery-preview a{overflow:hidden;border-radius:16px;position:relative;background:#eee}.gallery-preview a:first-child{grid-row:span 2}.gallery-preview img{width:100%;height:100%;object-fit:cover;transition:.4s}.gallery-preview a:hover img{transform:scale(1.05)}.gallery-preview a::after{content:'Lihat galeri';position:absolute;left:14px;bottom:12px;background:rgba(0,0,0,.58);color:#fff;padding:5px 9px;border-radius:8px;font-size:.72rem;opacity:0;transition:.2s}.gallery-preview a:hover::after{opacity:1}
+.cta{background:linear-gradient(120deg,#fff3f1,#fbf8f6);border:1px solid #ead7d4;border-radius:28px;padding:42px;display:flex;justify-content:space-between;align-items:center;gap:30px}.cta h2{font-family:'Plus Jakarta Sans',sans-serif;color:var(--red-900);font-size:1.8rem}.cta p{color:var(--muted);margin-top:5px}
+
+/* Internal pages */
+.profile-grid{display:grid;grid-template-columns:1fr .72fr;gap:22px}.profile-card{padding:32px}.profile-card h2,.profile-card h3{font-family:'Plus Jakarta Sans',sans-serif;color:var(--red-900);line-height:1.25}.profile-card h3{font-size:1.2rem;margin:26px 0 9px}.profile-card h3:first-child{margin-top:0}.profile-card p,.profile-card li{color:var(--muted)}.profile-card ul{padding-left:20px;display:grid;gap:8px}.quote-card{padding:32px;background:var(--red-900);color:#fff;border-radius:var(--radius-md);position:sticky;top:100px}.quote-card p{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.3rem;line-height:1.45}.quote-card span{display:block;color:#e7c9c6;margin-top:18px;font-size:.85rem}
+.org-chart{display:grid;gap:28px}.org-row{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}.person-card{width:min(260px,100%);padding:22px;text-align:center}.person-photo{width:118px;height:118px;border-radius:50%;object-fit:cover;margin:0 auto 16px;border:4px solid #f6e3e0;background:#f5efed}.person-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;line-height:1.3}.person-card p{color:var(--red-700);font-weight:700;font-size:.82rem;margin-top:4px}.placeholder-photo{display:grid;place-items:center;color:var(--red-800);font-weight:800;font-size:.72rem;text-align:center;padding:12px}.org-label{text-align:center;color:#8d7b77;font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.gallery-card{overflow:hidden;cursor:pointer}.gallery-card img{width:100%;height:260px;object-fit:cover;transition:.4s}.gallery-card:hover img{transform:scale(1.04)}.gallery-info{padding:17px}.gallery-info h3{font-size:.98rem;font-family:'Plus Jakarta Sans',sans-serif}.gallery-info p{font-size:.8rem;color:var(--muted);margin-top:3px}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:22px}.contact-card{padding:30px}.contact-list{display:grid;gap:18px;margin-top:24px}.contact-item{display:grid;grid-template-columns:42px 1fr;gap:13px}.contact-icon{width:42px;height:42px;border-radius:12px;background:#f7e8e6;color:var(--red-800);display:grid;place-items:center;font-weight:800}.contact-item strong{display:block}.contact-item span,.contact-item a{color:var(--muted);font-size:.9rem}.contact-item a:hover{color:var(--red-700)}.contact-form{display:grid;gap:16px;margin-top:20px}.field{display:grid;gap:7px}.field label{font-size:.82rem;font-weight:700}.field input,.field textarea{width:100%;border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px 14px;outline:none;transition:.2s}.field input:focus,.field textarea:focus{border-color:#bd8b87;box-shadow:0 0 0 4px #f8e8e6}.field textarea{min-height:150px;resize:vertical}.form-note{font-size:.75rem;color:var(--muted)}
+
+/* Footer */
+.site-footer{background:#240807;color:#fff;margin-top:70px}.footer-main{padding:52px 0 38px;display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:40px}.footer-brand p{color:#cbb9b7;max-width:420px;margin-top:14px;font-size:.9rem}.footer-title{font-weight:800;margin-bottom:14px}.footer-links{display:grid;gap:8px}.footer-links a{color:#cbb9b7;font-size:.88rem}.footer-links a:hover{color:#fff}.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:17px 0;color:#9f8986;font-size:.78rem;display:flex;justify-content:space-between;gap:20px}.footer-bottom a:hover{color:#fff}
+
+/* Mobile */
+@media(max-width:900px){.hero-grid,.intro-grid,.profile-grid,.contact-grid,.news-grid{grid-template-columns:1fr}.hero-grid{padding:58px 0}.hero-photo{height:390px}.hero-badge{left:15px}.feature-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:repeat(2,1fr)}.footer-main{grid-template-columns:1fr 1fr}.quote-card{position:static}.news-feature .thumb{height:300px}}
+@media(max-width:720px){.container,.nav-wrap{width:min(calc(100% - 28px),var(--container))}.nav-wrap{height:70px}.nav-toggle{display:grid;place-items:center}.site-nav{display:none;position:absolute;left:14px;right:14px;top:76px;padding:10px;background:var(--red-950);border:1px solid rgba(255,255,255,.12);border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.25);flex-direction:column;align-items:stretch}.site-nav.open{display:flex}.site-nav a{padding:12px 14px}.brand-sub{display:none}.brand-name{font-size:.92rem}.page-head{padding:54px 0 32px}.section{padding:62px 0}.section-head{align-items:start;flex-direction:column}.gallery-grid{grid-template-columns:1fr}.gallery-card img{height:240px}.gallery-preview{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px}.gallery-preview a:first-child{grid-column:span 2;grid-row:auto}.cta{padding:28px;align-items:flex-start;flex-direction:column}.footer-main{grid-template-columns:1fr}.footer-bottom{flex-direction:column}.hero h1{font-size:2.7rem}.hero-photo{height:330px}.news-mini{grid-template-columns:95px 1fr}.news-mini img{width:95px;height:82px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(18,6,5,.92);display:grid;place-items:center;padding:30px;opacity:0;transition:.2s}.lightbox.show{opacity:1}.lightbox img{max-width:min(1000px,94vw);max-height:88vh;object-fit:contain;border-radius:12px}.lightbox button{position:absolute;right:24px;top:18px;border:0;background:rgba(255,255,255,.12);color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.7rem;cursor:pointer}
+
+
+/* Motion system */
+[data-reveal]{opacity:0;transform:translate3d(0,28px,0);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1);transition-delay:var(--reveal-delay,0ms)}
+[data-reveal].is-visible{opacity:1;transform:none}
+[data-reveal="left"]{transform:translate3d(-34px,0,0)}
+[data-reveal="right"]{transform:translate3d(34px,0,0)}
+[data-reveal="scale"]{transform:scale(.94);transform-origin:center}
+.hero-copy > *{animation:heroItem .8s cubic-bezier(.22,1,.36,1) both}
+.hero-copy .eyebrow{animation-delay:.08s}.hero-copy h1{animation-delay:.16s}.hero-copy>p{animation-delay:.25s}.hero-copy .hero-actions{animation-delay:.34s}
+.hero-visual{animation:heroVisual 1s cubic-bezier(.22,1,.36,1) .18s both}
+.hero-badge{animation:badgeIn .8s cubic-bezier(.22,1,.36,1) .65s both}
+@keyframes heroItem{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes heroVisual{from{opacity:0;transform:translate3d(30px,18px,0) scale(.97)}to{opacity:1;transform:none}}
+@keyframes badgeIn{from{opacity:0;transform:translate3d(-15px,-10px,0) rotate(-3deg)}to{opacity:1;transform:none}}
+@keyframes heroGlow{from{transform:translate3d(-25px,20px) scale(.92)}to{transform:translate3d(10px,-10px) scale(1.08)}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+
+.gallery-card,.feature,.news-mini,.person-card{will-change:transform}
+.gallery-card:hover,.person-card:hover{transform:translateY(-7px)}
+.feature:hover .feature-icon,.contact-item:hover .contact-icon{transform:translateY(-2px) scale(1.06);background:#f3dfdc}
+.feature-icon,.contact-icon{transition:transform .35s cubic-bezier(.22,1,.36,1),background .35s ease}
+.gallery-preview a{transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s ease}.gallery-preview a:hover{transform:translateY(-4px);box-shadow:0 15px 30px rgba(46,20,18,.14)}
+.section-link{transition:color .25s ease,transform .25s ease;display:inline-block}.section-link:hover{transform:translateX(3px)}
+.lightbox{backdrop-filter:blur(8px);transition:opacity .35s ease}.lightbox img{transform:scale(.94);opacity:0;transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .35s ease}.lightbox.show img{transform:scale(1);opacity:1}
+@media(prefers-reduced-motion:reduce){[data-reveal],.hero-copy > *, .hero-visual,.hero-badge,.hero::after,.hero::before{opacity:1!important;transform:none!important;animation:none!important}.card:hover,.gallery-card:hover,.person-card:hover,.gallery-preview a:hover,.btn:hover{transform:none!important}.hero-photo:hover img,.news-feature:hover img,.gallery-preview a:hover img,.gallery-card:hover img{transform:none!important}}
